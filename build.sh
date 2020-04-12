@@ -13,16 +13,15 @@ mkdir tinycore && cd tinycore
 bsdtar xfp ../tinycore.iso
 chmod -R 0755 .
 # should now have boot/core cpio archive
-gzip -d boot/core.gz
 mkdir cpioroot && cd cpioroot
 # almost fucked my system up due to that PHUCKING cpio archive
-cpio -i --no-absolute-filenames < ../boot/core
+zcat ../boot/core.gz | cpio -d -i -H newc
 # place checkra1n to /usr/bin
 wget https://assets.checkra.in/downloads/linux/cli/x86_64/b0edbb87a5e084caf35795dcb3b088146ad5457235940f83e007f59ca57b319c/checkra1n-x86_64 -O usr/bin/checkra1n
+chmod +x usr/bin/checkra1n
 # repack and create new cpio archive
-find . -depth -print | cpio -o > ../boot/core
+find | cpio -H newc -o | gzip -9 > ../boot/core.gz
 # repack with gz
-gzip ../boot/core
 # rm cpioroot
 rm -rf ../cpioroot
 cd ~/tinyra1n
