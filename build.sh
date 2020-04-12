@@ -17,8 +17,9 @@ mkdir cpioroot && cd cpioroot
 # almost fucked my system up due to that PHUCKING cpio archive
 zcat ../boot/core.gz | cpio -d -i -H newc
 # place checkra1n to /usr/bin
-wget https://assets.checkra.in/downloads/linux/cli/x86_64/b0edbb87a5e084caf35795dcb3b088146ad5457235940f83e007f59ca57b319c/checkra1n-x86_64 -O usr/bin/checkra1n
+wget https://assets.checkra.in/downloads/linux/cli/i486/9b7a5c7821c8e06a334b854c5ffad7b28$
 chmod +x usr/bin/checkra1n
+cp ~/tinyra1n/resources/boot.msg ../boot/isolinux/boot.msg
 # repack and create new cpio archive
 find | cpio -H newc -o | gzip -9 > ../boot/core.gz
 # repack with gz
@@ -30,3 +31,4 @@ xorrisofs -o output.iso \
    -b boot/isolinux/isolinux.bin -c boot/isolinux/boot.cat \
    -no-emul-boot -boot-load-size 4 -boot-info-table \
    build/tinycore
+
