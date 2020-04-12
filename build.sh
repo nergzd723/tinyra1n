@@ -27,7 +27,7 @@ gzip ../boot/core
 rm -rf ../cpioroot
 cd ~/tinyra1n
 chmod -R 0755 build/
-mkisofs -o output.iso \
-   -b build/tinycore/boot/isolinux/isolinux.bin -c build/tinycore/boot/isolinux/boot.cat \
+xorrisofs -o output.iso \
+   -b boot/isolinux/isolinux.bin -c boot/isolinux/boot.cat \
    -no-emul-boot -boot-load-size 4 -boot-info-table \
    build/tinycore
