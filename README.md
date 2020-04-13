@@ -18,5 +18,6 @@ Prebuilts are not available until i FULLY test it. I don't want to harm you!
 
 tinyra1n come with no warranty.
 Built using tiny core linux and checkra1n.
+Idea for use Tiny Core: @x0r3d
 
 Maintainers: x0r3d and nergzd723
